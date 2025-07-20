@@ -1,4 +1,5 @@
 <template>
+  <Navbar />
   <h1>영화 정보</h1>
   <div v-for="(movie, i) in data" :key = "i" class="item">
     <figure>
@@ -10,59 +11,37 @@
       <p>{{ movie.category }}</p>
       <button @:click="increaseLike(i)">좋아요</button> <span>{{ movie.like }}</span>
       <p>
-        <button @click="isModal=true">상세보기</button>
+        <button @click="isModal=true; selectedMovie = i">상세보기</button>
       </p>
     </div>
   </div>
-
-  <div class="modal" v-if="isModal">
-    <div class="inner">
-      <h3>Detail</h3>
-      <p>영화 상세정보</p>
-      <button @click="isModal=false">닫기</button>
-    </div>
-  </div>
+  <Modal />
 </template>
 
 <script>
-  export default {
-    name: 'App',
-    data() {
-      return {
-        isModal: false,
-        foods: ['김밥', '순대', '만두'],
-        data: [
-          {
-            title: '노량',
-            year: 2021,
-            category: '액션, 드라마',
-            textRed: 'color: red',
-            like: 0,
-            imgUrl: '/assets/cat.jpeg'
-          },
-          {
-            title: '아쿠아맨',
-            year: 2022,
-            category: '액션, 판타지, 어드밴처',
-            like: 0,
-            imgUrl: '/assets/seol.jpeg'
-          },
-          {
-            title: '3일의 휴가',
-            year: 2023,
-            category: '판타지, 드라마',
-            like: 0,
-            imgUrl: '/assets/sol.JPG'
-          }
-        ]
-      }
-    },
-    methods: {
-      increaseLike(i) {
-        this.data[i].like += 1;
-      }
+import data from './assets/movies'
+import Modal from './components/Modal.vue';
+import Navbar from './components/Navbar.vue';
+
+export default {
+  name: 'App',
+  data() {
+    return {
+      isModal: false,
+      data: data,
+      selectedMovie: 0
     }
+  },
+  methods: {
+    increaseLike(i) {
+      this.data[i].like += 1;
+    }
+  },
+  components: {
+    Navbar: Navbar,
+    Modal: Modal
   }
+}
 
 </script>
 
