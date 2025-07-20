@@ -1,11 +1,9 @@
 <template>
-    <div>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Movies</a>
-            <a href="#">About</a>
-        </nav>
-    </div>
+    <nav class="navbar">
+        <a href="#">Home</a>
+        <a href="#">Movies</a>
+        <a href="#">About</a>
+    </nav>
 </template>
 
 <script>
@@ -16,8 +14,9 @@
 
 <style>
     .navbar {
-        background-: #000;
+        background: #000;
         padding: 20px;
+        text-align: center;
     }
 
     .navbar a {
