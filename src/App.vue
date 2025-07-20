@@ -16,7 +16,12 @@
       </p>
     </div>
   </div>
-  <Modal />
+  <Modal 
+    :data="data"
+    :isModal="isModal"
+    :selectedMovie="selectedMovie"
+    @closeModal="isModal=false"
+  />
 </template>
 
 <script>
